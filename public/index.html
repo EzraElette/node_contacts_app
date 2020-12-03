@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/main.css">
+  <script src="/javascripts/jquery.js"></script>
+  <script src="/javascripts/handlebars.js"></script>
+  <script src="/javascripts/ContactsAPI.js"></script>
+  <script src="/javascripts/tag.js"></script>
+  <script src="/javascripts/contact.js"></script>
+  <script src="/javascripts/contactsList.js"></script>
+  <script src="/javascripts/contactsFilter.js"></script>
+  <script src="/javascripts/App.js"></script>
+
+</head>
+<body>
+  <header>
+    <div class="search">
+      <label for="search">Search:</label>
+      <input type="text" name="search" id="search">
+      <section class="tags-section">
+        <label>Selected Tags</label>
+        <div class="tags-filter"></div>
+      </section>
+    </div>
+    <div class="add">
+      <button id="add-contact">Add Contact</button>
+    </div>
+  </header>
+  <main></main>
+  <footer>Made by Ezra Ellette</footer>
+  <script type="text/x-handlebars" id="contacts">
+    <ul id="contacts-list">
+      {{#each contacts}}
+        {{> contact}}
+      {{/each}}
+    </ul>
+  </script>
+
+  <script type="text/x-handlebars" id="contact" data-template="partial">
+    <li class="contact" data-id={{id}}>
+      <h2>{{full_name}}</h2>
+      <ul class="additional-info">
+        {{#if email}}
+          <li>
+            <h3>Email:</h3>
+            {{email}}
+          </li>
+        {{/if}}
+        {{#if phone_number}}
+          <li>
+            <h3>Phone:</h3>
+            {{phone_number}}
+          </li>
+        {{/if}}
+        {{#if tags}}
+        <li>
+          <h3>Tags:</h3>
+          <ul class="tags">
+            {{#each tags}}
+              <li class="tag">
+                <a href="#" class="tag-name">
+                  {{tag_name}}
+                </a>
+              </li>
+            {{/each}}
+          </ul>
+        </li>
+        {{/if}}
+      </ul>
+      <button class="update-contact">Edit</button>
+      <button class="delete-contact">Delete</button>
+    </li>
+  </script>
+
+  <script type="text/x-handlebars" id="addContact">
+    <!-- when the tags part is shown create a way to add and remove tags dynamically updating -->
+    <form class="add-contact">
+      <label for="full-name">Full Name</label>
+      <input type="text" name="full_name" id="full-name" value="{{full_name}}">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" value="{{email}}">
+      <label for="phone-number">Phone Number</label>
+      <input type="tel" name="phone_number" id="phone-number" value="{{phone_number}}">
+      <section class="tags-section">
+        <label>Tags</label>
+        {{> tags}}
+        <section class="add-tag">
+          <label>Add Tag</label>
+          <input type="text" name="tag-name" class="tag-name-input">
+          <button class="add-tag">+</button>
+        </section>
+      </section>
+      <input type="hidden" name="tags">
+      <button type="submit">Create</button>
+      <button id="cancel-create-contact">Cancel</button>
+    </form>
+  </script>
+
+  <script type="text/x-handlebars" id="updateContact">
+    <!-- when the tags part is shown create a way to add and remove tags dynamically updating -->
+    <form class="update-contact" data-id="{{id}}">
+      <label for="full-name">Full Name</label>
+      <input type="text" name="full_name" id="full-name" value="{{full_name}}">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" value="{{email}}">
+      <label for="phone-number">Phone Number</label>
+      <input type="tel" name="phone_number" id="phone-number" value="{{phone_number}}">
+      <section class="tags-section">
+        <label>Tags</label>
+        {{> tags}}
+        <section class="add-tag">
+          <label>Add Tag</label>
+          <input type="text" name="tag-name" class="tag-name-input">
+          <button class="add-tag">+</button>
+        </section>
+      </section>
+      <input type="hidden" name="tags">
+      <button type="submit">Update</button>
+      <button class="cancel-update-contact">Cancel</button>
+    </form>
+  </script>
+
+  <script type="text/x-handlebars" id="tag" data-template="partial">
+    <span class="tag">
+        {{tag_name}}
+        <a href="#" class="tag-delete">X</a>
+    </span>
+  </script>
+
+  <script id="tags" type="text/x-handlebars" data-template="partial">
+    <span class="tags">
+      {{#each tags}}
+        {{> tag}}
+      {{/each}}
+    </span>
+  </script>
+
+  <script id="deleteModal" type="text/x-handlebars">
+    <div class="delete-modal">
+      <section class="delete-modal">
+        <h1>Do You want to delete this contact?</h1>
+        <button class="confirm-delete-contact" data-id="{{id}}">CONFIRM</button>
+        <button class="cancel-delete-contact">CANCEL</button>
+      </section>
+    </div>
+  </script>
+</body>
+</html>

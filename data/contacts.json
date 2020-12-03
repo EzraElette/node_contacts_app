@@ -1,0 +1,65 @@
+[
+  {
+    "id": 2,
+    "full_name": "Victor Reyes",
+    "email": "vpr@example.com",
+    "phone_number": "2131432443",
+    "tags": "friend,work"
+  },
+  {
+    "id": 3,
+    "full_name": "Pete Hanson",
+    "email": "ph@example.com",
+    "phone_number": "54321098761",
+    "tags": "work"
+  },
+  {
+    "full_name": "Ezra",
+    "phone_number": "",
+    "email": "",
+    "tags": "friend",
+    "id": 4
+  },
+  {
+    "full_name": "Bob Marley",
+    "phone_number": "5644224454345",
+    "email": "",
+    "tags": "reggae",
+    "id": 5
+  },
+  {
+    "full_name": "John Bob",
+    "phone_number": "4456675543",
+    "email": "john@example.com",
+    "tags": "work,friend,math,Bob Family",
+    "id": 6
+  },
+  {
+    "full_name": "Rosie O'Donnell",
+    "phone_number": "",
+    "email": "",
+    "tags": "",
+    "id": 7
+  },
+  {
+    "full_name": "Larry David",
+    "phone_number": "",
+    "email": "",
+    "tags": "",
+    "id": 8
+  },
+  {
+    "full_name": "JoJo",
+    "phone_number": "0123456789",
+    "email": "a@b.com",
+    "tags": "pineapple,mango",
+    "id": 9
+  },
+  {
+    "full_name": "Candy",
+    "phone_number": "0123456",
+    "email": "a@b.com",
+    "tags": "eat,pray,love",
+    "id": 10
+  }
+]
