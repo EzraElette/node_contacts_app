@@ -1,7 +1,9 @@
-class App extends ContactsFilter {
+class App {
   constructor() {
-    super();
+    Object.assign(App.prototype, Contact, ContactFilter, ContactList, Tag);
+    this.registerTemplates();
     this.displayContacts();
+    this.bindEventHandlers();
   }
 
   displayContacts() {
@@ -56,4 +58,6 @@ class App extends ContactsFilter {
   }
 }
 
-$(() => new App());
+$(() => {
+  new App();
+});

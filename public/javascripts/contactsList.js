@@ -1,9 +1,9 @@
-class ContactsList extends Contact {
-  constructor() {
-    super();
-    this.registerTemplates();
-    this.bindEventHandlers();
-  }
+const ContactList = {
+  // constructor() {
+  //   // super();
+  //   // this.registerTemplates();
+  //   // this.bindEventHandlers();
+  // }
 
   registerTemplates() {
     this.templates ||= {};
@@ -21,19 +21,19 @@ class ContactsList extends Contact {
         }
       }.bind(this)
     );
-  }
+  },
 
   fetchContacts() {
     let contacts;
     ContactsAPI.fetchContacts().done((res) => (contacts = res));
     return contacts;
-  }
+  },
 
   bindEventHandlers() {
     $(document).click(this.clickHandlers.bind(this));
     $(document).submit(this.submitHandlers.bind(this));
     $("#search").keyup(this.filterContactsByQuery.bind(this));
-  }
+  },
 
   submitHandlers(event) {
     let $form = $(event.target);
@@ -49,7 +49,7 @@ class ContactsList extends Contact {
         this.resetHeader.call(this);
         break;
     }
-  }
+  },
 
   clickHandlers(event) {
     switch (true) {
@@ -63,7 +63,7 @@ class ContactsList extends Contact {
         this.clearDeleteContactModal();
         break;
     }
-  }
+  },
 
   buttonHandlers(event) {
     let $target = $(event.target);
@@ -96,7 +96,7 @@ class ContactsList extends Contact {
         this.removeUpdateForm.call(this, $target);
         break;
     }
-  }
+  },
 
   linkHandlers(event) {
     let $target = $(event.target);
@@ -114,12 +114,12 @@ class ContactsList extends Contact {
         this.filterByTag.call(this, $target.text().trim());
         break;
     }
-  }
+  },
 
   getContact(id) {
     let contact;
     ContactsAPI.getContact(id).done((res) => (contact = res));
 
     return contact;
-  }
+  },
 }

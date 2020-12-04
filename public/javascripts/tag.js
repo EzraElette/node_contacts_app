@@ -1,4 +1,4 @@
-class Tag {
+const Tag = {
   displayTagFilters() {
     let tags = {
       tags: this.tagFilters.map((name) => {
@@ -6,7 +6,7 @@ class Tag {
       }),
     };
     $("header .tags-filter").html(this.templates["tags"](tags));
-  }
+  },
 
   removeTag($deleteLink) {
     let tagName = $deleteLink
@@ -22,7 +22,7 @@ class Tag {
       this.resetFilters();
     }
     $deleteLink.closest(".tag").remove();
-  }
+  },
 
   addTag($form) {
     let $tag = $form.find(".tag-name-input");
@@ -36,7 +36,7 @@ class Tag {
       .find(".tags")
       .append(this.templates["tag"]({ tag_name: tagName }));
     $tag.val("");
-  }
+  },
 
   configureTags(contacts) {
     $.each(contacts, function (_index, contact) {
@@ -51,5 +51,5 @@ class Tag {
         });
       }
     });
-  }
+  },
 }

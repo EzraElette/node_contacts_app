@@ -1,7 +1,7 @@
-class ContactsFilter extends ContactsList {
-  constructor() {
-    super();
-  }
+const ContactFilter = {
+  // constructor() {
+  //   super();
+  // }
 
   updateCurrentTagFilters(tag) {
     this.tagFilters ||= [];
@@ -10,7 +10,7 @@ class ContactsFilter extends ContactsList {
       console.log(tag);
     }
     this.displayTagFilters();
-  }
+  },
 
   resetFilters() {
     $("#contacts-list .contact").each(function (_index, contact) {
@@ -21,7 +21,7 @@ class ContactsFilter extends ContactsList {
     this.tagFilters.forEach((tag) => {
       this.filterByTag(tag);
     });
-  }
+  },
 
   filterByTag(tagName) {
     this.updateCurrentTagFilters(tagName);
@@ -36,7 +36,7 @@ class ContactsFilter extends ContactsList {
         $contact.css("display", "none");
       }
     });
-  }
+  },
 
   filterContactsByQuery(event) {
     let $target = $(event.target);
@@ -62,5 +62,5 @@ class ContactsFilter extends ContactsList {
         $contact.css("display", "none");
       }
     });
-  }
+  },
 }

@@ -1,7 +1,7 @@
-class Contact extends Tag {
-  constructor() {
-    super();
-  }
+const Contact = {
+  // constructor() {
+  //   super();
+  // }
 
   updateContact(event) {
     let $form = $(event.target);
@@ -10,21 +10,21 @@ class Contact extends Tag {
     ContactsAPI.updateContact($form.data("id"), contact)
                 .done(this.displayUpdatedContact.bind(this)
     );
-  }
+  },
 
   clearDeleteContactModal() {
     $(".delete-modal").remove();
-  }
+  },
 
   removeContactFromDOM(id) {
     $(`li[data-id=${id}]`).remove();
-  }
+  },
 
   createContact(event) {
     let contact = this.createContactFromForm($(event.target));
 
     ContactsAPI.createContact(contact).done(this.displayNewContact.bind(this));
-  }
+  },
 
   createContactFromForm($form) {
     let contact = {
@@ -48,7 +48,7 @@ class Contact extends Tag {
     if (!contact.tags) contact.tags = null;
 
     return contact;
-  }
+  },
 
   deleteContact(event) {
     let deleteID = $(event.target).data("id");
@@ -59,5 +59,5 @@ class Contact extends Tag {
         this.removeContactFromDOM.call(this, deleteID)
       ]
     );
-  }
+  },
 }
